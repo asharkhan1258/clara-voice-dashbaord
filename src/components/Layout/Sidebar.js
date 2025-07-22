@@ -102,7 +102,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               key={item.id}
               onClick={() => console.log(`Navigate to ${item.name}`)}
               className={`
-                group flex items-center px-5 py-3 text-xl font-medium rounded-md mb-1 w-full text-left
+                group flex items-start px-5 py-3 text-xl font-medium rounded-md mb-1 w-full text-left
                 ${
                   item.active
                     ? "bg-blue-600 text-white"
@@ -110,7 +110,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                 }
               `}
             >
-              <span className="mr-3 flex-shrink-0">{iconMap[item.icon]}</span>
+              <span className="mr-3 flex-shrink-0 p-1">{iconMap[item.icon]}</span>
               {item.name}
             </button>
           ))}
