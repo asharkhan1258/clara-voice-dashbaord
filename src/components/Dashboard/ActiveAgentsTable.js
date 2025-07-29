@@ -27,54 +27,58 @@ const ActiveAgentsTable = () => {
 
   return (
     <section>
-      <div className="py-5">
-        <h3 className="text-3xl font-semibold text-gray-900">Active Agents</h3>
+      <div className="py-6 mb-2">
+        <h3 className="text-3xl font-semibold tracking-tight" style={{ color: 'var(--apple-gray-900)' }}>Active Agents</h3>
       </div>
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200">
+      <div className="apple-card rounded-3xl overflow-hidden">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="overflow-x-auto">
             <table className="min-w-full">
-              <thead className="bg-white divide-y border-b divide-gray-200">
+              <thead className="apple-glass" style={{ background: 'rgba(248, 250, 252, 0.8)' }}>
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-5 text-left text-base font-semibold text-gray-900"
+                    className="px-8 py-6 text-left text-lg font-semibold tracking-tight"
+                    style={{ color: 'var(--apple-gray-900)' }}
                   >
                     Name
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-5 text-left text-base font-semibold text-gray-900"
+                    className="px-8 py-6 text-left text-lg font-semibold tracking-tight"
+                    style={{ color: 'var(--apple-gray-900)' }}
                   >
                     Department
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-5 text-left text-base font-semibold text-gray-900"
+                    className="px-8 py-6 text-left text-lg font-semibold tracking-tight"
+                    style={{ color: 'var(--apple-gray-900)' }}
                   >
                     Phone Number
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-5 text-left text-base font-semibold text-gray-900"
+                    className="px-8 py-6 text-left text-lg font-semibold tracking-tight"
+                    style={{ color: 'var(--apple-gray-900)' }}
                   >
                     Active
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="divide-y" style={{ divideColor: 'var(--apple-gray-100)' }}>
                 {activeAgents.map((agent) => (
-                  <tr key={agent.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-5 whitespace-nowrap text-base font-medium text-gray-900">
+                  <tr key={agent.id} className="transition-all duration-150 ease-out hover:bg-gray-50/60">
+                    <td className="px-8 py-6 whitespace-nowrap text-lg font-medium" style={{ color: 'var(--apple-gray-900)' }}>
                       {agent.name}
                     </td>
-                    <td className="px-6 py-5 whitespace-nowrap text-base text-gray-700">
+                    <td className="px-8 py-6 whitespace-nowrap text-lg" style={{ color: 'var(--apple-gray-700)' }}>
                       {agent.department}
                     </td>
-                    <td className="px-6 py-5 whitespace-nowrap text-base text-gray-700">
+                    <td className="px-8 py-6 whitespace-nowrap text-lg font-mono" style={{ color: 'var(--apple-gray-700)' }}>
                       {agent.phoneNumber}
                     </td>
-                    <td className="px-6 py-5 whitespace-nowrap text-base text-gray-700">
+                    <td className="px-8 py-6 whitespace-nowrap text-lg">
                       <Toggle
                         enabled={watchedAgents[agent.id] || false}
                         onChange={handleToggleChange}
@@ -86,10 +90,11 @@ const ActiveAgentsTable = () => {
               </tbody>
             </table>
           </div>
-          <div className="px-6 py-3 bg-gray-50 border-t border-gray-200 hidden">
+          <div className="px-8 py-4 apple-glass border-t hidden" style={{ borderColor: 'var(--apple-gray-100)', background: 'rgba(248, 250, 252, 0.8)' }}>
             <button
               type="submit"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium"
+              className="px-6 py-3 rounded-2xl text-lg font-medium text-white transition-all duration-200 ease-out hover:scale-105 active:scale-95"
+              style={{ background: 'var(--apple-blue-500)' }}
             >
               Save Changes
             </button>

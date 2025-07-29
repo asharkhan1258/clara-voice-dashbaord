@@ -4,12 +4,13 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-sm border-b border-l border-gray-200">
-      <div className="flex items-center justify-between px-6 py-3">
+    <header className="apple-glass border-b relative z-40" style={{ borderColor: 'var(--apple-gray-200)' }}>
+      <div className="flex items-center justify-between px-8 py-4">
         <div className="flex items-center">
           <button
             type="button"
-            className="lg:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="lg:hidden p-3 rounded-2xl transition-all duration-200 ease-out hover:bg-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            style={{ color: 'var(--apple-gray-600)' }}
             onClick={() => setSidebarOpen(!sidebarOpen)}
           >
             <span className="sr-only">Open sidebar</span>
@@ -18,28 +19,29 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
+              strokeWidth={2}
             >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth="2"
                 d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
           </button>
 
-          <div className="ml-4 lg:ml-0">
-            <h1 className="text-2xl font-semibold text-gray-900">
+          <div className="ml-6 lg:ml-0">
+            <h1 className="text-3xl font-semibold tracking-tight" style={{ color: 'var(--apple-gray-900)' }}>
               Dashboard{" "}
-              <span className="text-gray-500 font-normal">(Home)</span>
+              <span className="font-normal" style={{ color: 'var(--apple-gray-500)' }}>(Home)</span>
             </h1>
           </div>
         </div>
 
-        <div className="relative">
+        <div className="relative z-50">
           <button
             type="button"
-            className="flex items-center text-base font-medium text-gray-900 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-md px-3 py-2"
+            className="flex items-center text-lg font-medium rounded-2xl px-4 py-3 transition-all duration-200 ease-out hover:bg-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            style={{ color: 'var(--apple-gray-900)' }}
             onClick={() => setDropdownOpen(!dropdownOpen)}
           >
             <span>Admin</span>
@@ -57,14 +59,20 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
           </button>
 
           {dropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 border border-gray-200">
-              <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+            <div 
+              className="absolute right-0 mt-3 w-52 bg-white rounded-2xl py-2 z-[100] animate-in fade-in duration-200 border" 
+              style={{ 
+                boxShadow: '0 20px 25px rgba(0, 0, 0, 0.15), 0 8px 10px rgba(0, 0, 0, 0.06)',
+                borderColor: 'var(--apple-gray-200)'
+              }}
+            >
+              <button className="block w-full text-left px-5 py-3 text-base font-medium rounded-xl mx-2 transition-all duration-150 ease-out hover:bg-gray-50" style={{ color: 'var(--apple-gray-700)' }}>
                 Profile
               </button>
-              <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              <button className="block w-full text-left px-5 py-3 text-base font-medium rounded-xl mx-2 transition-all duration-150 ease-out hover:bg-gray-50" style={{ color: 'var(--apple-gray-700)' }}>
                 Settings
               </button>
-              <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              <button className="block w-full text-left px-5 py-3 text-base font-medium rounded-xl mx-2 transition-all duration-150 ease-out hover:bg-gray-50" style={{ color: 'var(--apple-gray-700)' }}>
                 Sign out
               </button>
             </div>

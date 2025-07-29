@@ -2,16 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --apple-gray-50: #fafbfc;
+  --apple-gray-100: #f4f6f8;
+  --apple-gray-200: #e8ecf0;
+  --apple-gray-300: #d6dce3;
+  --apple-gray-400: #a8b4c2;
+  --apple-gray-500: #7c8a9b;
+  --apple-gray-600: #5a6470;
+  --apple-gray-700: #3e434a;
+  --apple-gray-800: #2c2f36;
+  --apple-gray-900: #1a1d24;
+  
+  --apple-blue-50: #f0f7ff;
+  --apple-blue-500: #007aff;
+  --apple-blue-600: #0056d6;
+  
+  --apple-green-500: #30d158;
+  --apple-red-500: #ff3b30;
+  --apple-orange-500: #ff9500;
+  
+  --apple-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --apple-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
+  --apple-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.06), 0 4px 6px rgba(0, 0, 0, 0.03);
+  --apple-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.08), 0 8px 10px rgba(0, 0, 0, 0.04);
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, var(--apple-gray-50) 0%, #ffffff 100%);
+  letter-spacing: -0.01em;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: 'SF Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.apple-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--apple-shadow-md);
+}
+
+.apple-glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.apple-hover-lift {
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.apple-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--apple-shadow-lg);
 }

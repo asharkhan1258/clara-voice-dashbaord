@@ -64,57 +64,141 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
     <>
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden"
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-20 lg:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}
 
       <div
         className={`
-        fixed inset-y-0 left-0 z-30 w-64 bg-gray-900 transform transition-transform duration-300 ease-in-out
+        fixed inset-y-0 left-0 z-30 w-80 transform transition-all duration-300 ease-out
         lg:translate-x-0 lg:static lg:inset-0
         ${isOpen ? "translate-x-0" : "-translate-x-full"}
       `}
+        style={{ 
+          background: 'linear-gradient(180deg, #1a1d24 0%, #0d1117 100%)'
+        }}
       >
-        <div className="flex items-center justify-center h-16 bg-white">
-          <div className="flex items-center space-x-2">
-            <svg
-              className="w-8 h-8 text-blue-600"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fillRule="evenodd"
-                d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7z"
-                clipRule="evenodd"
-              />
-            </svg>
+        {/* Header Section */}
+        <div className="relative">
+          <div className="absolute inset-0 apple-glass" style={{ 
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%)',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
+          }} />
+          <div className="relative flex items-center justify-center h-[85px] px-6">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 rounded-3xl flex items-center justify-center shadow-lg" 
+                   style={{ 
+                     background: 'linear-gradient(135deg, var(--apple-blue-500) 0%, var(--apple-blue-600) 100%)',
+                     boxShadow: '0 8px 20px rgba(0, 122, 255, 0.3)'
+                   }}>
+                <svg
+                  className="w-7 h-7 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
 
-            <span className="text-gray-900 text-2xl font-semibold">
-              Clara Voice
-            </span>
+              <div>
+                <span className="text-2xl font-semibold tracking-tight text-white">
+                  Clara Voice
+                </span>
+                {/* <div className="text-sm font-medium" style={{ color: 'var(--apple-gray-400)' }}>
+                  Voice Dashboard
+                </div> */}
+              </div>
+            </div>
           </div>
         </div>
 
-        <nav className="mt-5 px-2">
-          {navigationItems.map((item) => (
+        {/* Navigation Section */}
+        <nav className="mt-6 px-6 space-y-2">
+          <div className="text-xs font-semibold uppercase tracking-wider mb-4 px-4" 
+               style={{ color: 'var(--apple-gray-400)' }}>
+            Navigation
+          </div>
+          
+          {navigationItems.map((item, index) => (
             <button
               key={item.id}
               onClick={() => console.log(`Navigate to ${item.name}`)}
               className={`
-                group flex items-start px-5 py-3 text-xl font-medium rounded-md mb-1 w-full text-left
-                ${
-                  item.active
-                    ? "bg-blue-600 text-white"
-                    : "text-gray-300 hover:bg-gray-700 hover:text-white"
+                group relative flex items-center w-full text-left rounded-2xl
+                transition-all duration-300 ease-out transform
+                ${item.active 
+                  ? "text-white scale-[1.02]" 
+                  : "text-gray-300 hover:text-white hover:scale-[1.01]"
                 }
               `}
+              style={{
+                background: item.active 
+                  ? 'linear-gradient(135deg, rgba(0, 122, 255, 0.8) 0%, rgba(0, 86, 214, 0.9) 100%)'
+                  : 'transparent'
+              }}
             >
-              <span className="mr-3 flex-shrink-0 p-1">{iconMap[item.icon]}</span>
-              {item.name}
+              {/* Background blur effect for active item */}
+              {item.active && (
+                <div className="absolute inset-0 rounded-2xl backdrop-blur-xl" 
+                     style={{ 
+                       background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%)',
+                       border: '1px solid rgba(255, 255, 255, 0.15)'
+                     }} />
+              )}
+              
+              {/* Hover background for non-active items */}
+              {!item.active && (
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                     style={{ background: 'rgba(255, 255, 255, 0.05)' }} />
+              )}
+
+              <div className="relative flex items-center px-5 py-4 w-full">
+                {/* Icon container */}
+                <div className={`
+                  w-10 h-10 rounded-xl flex items-center justify-center mr-4 transition-all duration-300
+                  ${item.active 
+                    ? "bg-white/20 shadow-lg" 
+                    : "bg-white/5 group-hover:bg-white/10"
+                  }
+                `}>
+                  {iconMap[item.icon]}
+                </div>
+
+                {/* Text */}
+                <span className="text-lg font-medium tracking-tight">
+                  {item.name}
+                </span>
+
+                {/* Active indicator */}
+                {item.active && (
+                  <div className="ml-auto w-2 h-2 rounded-full bg-white shadow-lg" />
+                )}
+              </div>
             </button>
           ))}
         </nav>
+
+        {/* Bottom Section */}
+        <div className="absolute bottom-0 left-0 right-0 p-6">
+          <div className="rounded-2xl p-4" 
+               style={{ 
+                 background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                 border: '1px solid rgba(255, 255, 255, 0.1)'
+               }}>
+            <div className="text-sm font-medium text-white mb-1">System Status</div>
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 rounded-full bg-green-500 shadow-lg"></div>
+              <span className="text-sm" style={{ color: 'var(--apple-gray-400)' }}>
+                All systems operational
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
